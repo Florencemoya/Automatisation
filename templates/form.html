@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcul des valeurs</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin: 20px auto;
+            width: 400px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        p {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Renseignement des champs</h1>
+    <form action="/calculate" method="POST" onsubmit = "resetForm()">
+        <label for="dt_quadsupg">DT_quadsupg:</label>
+        <input type="number" name="dt_quadsupg" id="dt_quadsupg" step="0.01" required><br>
+
+        <label for="dt_quadinfg">DT_quadinfg:</label>
+        <input type="number" name="dt_quadinfg" id="dt_quadinfg" step="0.01" required><br>
+
+        <label for="dt_quadsupd">DT_quadsupd:</label>
+        <input type="number" name="dt_quadsupd" id="dt_quadsupd" step="0.01" required><br>
+
+        <label for="dt_quadinfd">DT_quadinfd:</label>
+        <input type="number" name="dt_quadinfd" id="dt_quadinfd" step="0.01" required><br>
+
+        <label for="dt_dis_quadsupg">DT_dis_quadsupg:</label>
+        <input type="number" name="dt_dis_quadsupg" id="dt_dis_quadsupg" step="0.01" required><br>
+
+        <label for="dt_dis_quadinfg">DT_dis_quadinfg:</label>
+        <input type="number" name="dt_dis_quadinfg" id="dt_dis_quadinfg" step="0.01" required><br>
+
+        <label for="dt_dis_quadsupd">DT_dis_quadsupd:</label>
+        <input type="number" name="dt_dis_quadsupd" id="dt_dis_quadsupd" step="0.01" required><br>
+
+        <label for="dt_dis_quadinfd">DT_dis_quadinfd:</label>
+        <input type="number" name="dt_dis_quadinfd" id="dt_dis_quadinfd" step="0.01" required><br>
+
+        <label for="st">ST:</label>
+        <input type="number" name="st" id="st" step="0.01" required><br>
+
+        <label for="dt_centrale">DT_centrale:</label>
+        <input type="number" name="dt_centrale" id="dt_centrale" step="0.01" required><br>
+
+        <label for="dt_dis_centrale">DT_dis_centrale:</label>
+        <input type="number" name="dt_dis_centrale" id="dt_dis_centrale" step="0.01" required><br>
+
+        <input type="submit" value="Calculer">
+    </form>
+    {% if request.method == 'POST' %}
+    <p>Le resultat est {{ result }}.</p>
+    {% endif %}
+    <script>
+        function resetForm() {
+            // Réinitialiser les champs du formulaire
+            var dt_quadsupg = document.getElementById("dt_quadsupg");
+            var dt_quadinfg = document.getElementById("dt_quadinfg");
+            var dt_quadsupd = document.getElementById("dt_quadsupd");
+            var dt_quadinfd = document.getElementById("dt_quadinfd");
+            var dt_dis_quadsupg = document.getElementById("dt_dis_quadsupg");
+            var dt_dis_quadinfg = document.getElementById("dt_dis_quadinfg");
+            var dt_dis_quadsupd = document.getElementById("dt_dis_quadsupd");
+            var dt_dis_quadinfd = document.getElementById("dt_dis_quadinfd");
+            var st = document.getElementById("st");
+            var dt_centrale = document.getElementById("dt_centrale");
+            var dt_dis_centrale = document.getElementById("dt_dis_centrale");
+    
+            // Vérifier si les champs sont vides avant de réinitialiser
+            if (dt_quadsupg.value == '') {
+                dt_quadsupg.value = "0";
+            }
+    
+            if (dt_quadinfg.value == '') {
+                dt_quadinfg.value = "0";
+            }
+    
+            if (dt_quadsupd.value == '') {
+                dt_quadsupd.value = "0";
+            }
+    
+            if (dt_quadinfd.value == '') {
+                dt_quadinfd.value = "0";
+            }
+    
+            if (dt_dis_quadsupg.value == '') {
+                dt_dis_quadsupg.value = "0";
+            }
+    
+            if (dt_dis_quadinfg.value == '') {
+                dt_dis_quadinfg.value = "0";
+            }
+    
+            if (dt_dis_quadinfd.value == '') {
+                dt_dis_quadinfd.value = "0";
+            }
+    
+            if ( st.value == '') {
+                st.value = "0";
+            }
+    
+            if (dt_centrale.value == '') {
+                dt_centrale.value = "";
+            }
+    
+            if (dt_dis_centrale.value == '') {
+                dt_dis_centrale.value = "0";
+            }
+    
+
+            // Réinitialiser les autres champs du formulaire
+    
+            // Empêcher l'envoi du formulaire (pour éviter le rechargement de la page)
+            return false;
+        }
+    </script>
+
+</body>
+</html>
